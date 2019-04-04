@@ -551,6 +551,10 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
   #endif
 #endif
 
+#if defined(EVENT_GCODE_SD_STOP) && DISABLED(NOZZLE_PARK_FEATURE)
+  static_assert(NULL == strstr(EVENT_GCODE_SD_STOP, "G27"), "NOZZLE_PARK_FEATURE is required to use G27 in EVENT_GCODE_SD_STOP.");
+#endif
+
 /**
  * I2C Position Encoders
  */
@@ -1978,9 +1982,15 @@ static_assert(   _ARR_TEST(3,0) && _ARR_TEST(3,1) && _ARR_TEST(3,2)
               && _ARR_TEST(3,3) && _ARR_TEST(3,4) && _ARR_TEST(3,5)
               && _ARR_TEST(3,6) && _ARR_TEST(3,7) && _ARR_TEST(3,8),
               "DEFAULT_MAX_ACCELERATION values must be positive.");
+<<<<<<< HEAD
 
 #undef _ARR_TEST
 
+=======
+
+#undef _ARR_TEST
+
+>>>>>>> upstream/bugfix-2.0.x
 #if BOTH(CNC_COORDINATE_SYSTEMS, NO_WORKSPACE_OFFSETS)
   #error "CNC_COORDINATE_SYSTEMS is incompatible with NO_WORKSPACE_OFFSETS."
 #endif

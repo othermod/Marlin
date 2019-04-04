@@ -41,7 +41,14 @@
   #endif
   #if ENABLED(WEBSUPPORT)
     #include "web.h"
+<<<<<<< HEAD
   #endif
+=======
+    #include "spiffs.h"
+  #endif
+#elif ENABLED(EEPROM_SETTINGS)
+  #include "spiffs.h"
+>>>>>>> upstream/bugfix-2.0.x
 #endif
 
 // --------------------------------------------------------------------------
@@ -95,9 +102,18 @@ void HAL_init(void) {
       OTA_init();
     #endif
     #if ENABLED(WEBSUPPORT)
+<<<<<<< HEAD
       web_init();
     #endif
     server.begin();
+=======
+      spiffs_init();
+      web_init();
+    #endif
+    server.begin();
+  #elif ENABLED(EEPROM_SETTINGS)
+    spiffs_init();
+>>>>>>> upstream/bugfix-2.0.x
   #endif
 
   i2s_init();

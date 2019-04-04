@@ -338,13 +338,6 @@
   #endif
 #endif
 
-// Boot screens
-#if !HAS_SPI_LCD
-  #undef SHOW_BOOTSCREEN
-#elif !defined(BOOTSCREEN_TIMEOUT)
-  #define BOOTSCREEN_TIMEOUT 2500
-#endif
-
 /**
  * Extruders have some combination of stepper motors and hotends
  * so we separate these concepts into the defines:
@@ -519,6 +512,10 @@
 #define Z_MULTI_STEPPER_DRIVERS EITHER(Z_DUAL_STEPPER_DRIVERS, Z_TRIPLE_STEPPER_DRIVERS)
 #define Z_MULTI_ENDSTOPS EITHER(Z_DUAL_ENDSTOPS, Z_TRIPLE_ENDSTOPS)
 #define HAS_EXTRA_ENDSTOPS (EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS)
+<<<<<<< HEAD
+=======
+#define HAS_GAME_MENU (1 < ENABLED(MARLIN_BRICKOUT) + ENABLED(MARLIN_INVADERS) + ENABLED(MARLIN_SNAKE))
+>>>>>>> upstream/bugfix-2.0.x
 
 #define IS_SCARA     EITHER(MORGAN_SCARA, MAKERARM_SCARA)
 #define IS_KINEMATIC (ENABLED(DELTA) || IS_SCARA)

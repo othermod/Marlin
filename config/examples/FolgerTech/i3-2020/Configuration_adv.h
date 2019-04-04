@@ -773,8 +773,9 @@
   // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
   #define SDCARD_RATHERRECENTFIRST
 
-  // Add an option in the menu to run all auto#.g files
-  //#define MENU_ADDAUTOSTART
+  //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
+
+  #define EVENT_GCODE_SD_STOP "G27"         // G-code to run on Stop Print (e.g., "G28XY" or "G27")
 
   /**
    * Continue after Power-Loss (Creality3D)
@@ -962,6 +963,14 @@
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
+<<<<<<< HEAD:config/examples/FolgerTech/i3-2020/Configuration_adv.h
+=======
+
+  // Frivolous Game Options
+  //#define MARLIN_BRICKOUT
+  //#define MARLIN_INVADERS
+  //#define MARLIN_SNAKE
+>>>>>>> upstream/bugfix-2.0.x:config/examples/FolgerTech/i3-2020/Configuration_adv.h
 
 #endif // HAS_GRAPHICAL_LCD
 
@@ -1577,6 +1586,7 @@
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
   #define STEALTHCHOP_E
+<<<<<<< HEAD:config/examples/FolgerTech/i3-2020/Configuration_adv.h
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -1595,6 +1605,26 @@
   #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
 
   /**
+=======
+
+  /**
+   * Optimize spreadCycle chopper parameters by using predefined parameter sets
+   * or with the help of an example included in the library.
+   * Provided parameter sets are
+   * CHOPPER_DEFAULT_12V
+   * CHOPPER_DEFAULT_19V
+   * CHOPPER_DEFAULT_24V
+   * CHOPPER_DEFAULT_36V
+   * CHOPPER_PRUSAMK3_24V // Imported parameters from the official Prusa firmware for MK3 (24V)
+   * CHOPPER_MARLIN_119   // Old defaults from Marlin v1.1.9
+   *
+   * Define you own with
+   * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
+   */
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+
+  /**
+>>>>>>> upstream/bugfix-2.0.x:config/examples/FolgerTech/i3-2020/Configuration_adv.h
    * Monitor Trinamic drivers for error conditions,
    * like overtemperature and short to ground. TMC2208 requires hardware serial.
    * In the case of overtemperature Marlin can decrease the driver current until error condition clears.
@@ -1720,6 +1750,7 @@
     #define X2_MAX_VOLTAGE     127
     #define X2_CHAIN_POS         0
   #endif
+<<<<<<< HEAD:config/examples/FolgerTech/i3-2020/Configuration_adv.h
 
   #if AXIS_DRIVER_TYPE_Y(L6470)
     #define Y_MICROSTEPS       128
@@ -1761,6 +1792,49 @@
     #define Z3_CHAIN_POS         0
   #endif
 
+=======
+
+  #if AXIS_DRIVER_TYPE_Y(L6470)
+    #define Y_MICROSTEPS       128
+    #define Y_OVERCURRENT     2000
+    #define Y_STALLCURRENT    1500
+    #define Y_MAX_VOLTAGE      127
+    #define Y_CHAIN_POS          0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Y2(L6470)
+    #define Y2_MICROSTEPS      128
+    #define Y2_OVERCURRENT    2000
+    #define Y2_STALLCURRENT   1500
+    #define Y2_MAX_VOLTAGE     127
+    #define Y2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z(L6470)
+    #define Z_MICROSTEPS       128
+    #define Z_OVERCURRENT     2000
+    #define Z_STALLCURRENT    1500
+    #define Z_MAX_VOLTAGE      127
+    #define Z_CHAIN_POS          0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z2(L6470)
+    #define Z2_MICROSTEPS      128
+    #define Z2_OVERCURRENT    2000
+    #define Z2_STALLCURRENT   1500
+    #define Z2_MAX_VOLTAGE     127
+    #define Z2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z3(L6470)
+    #define Z3_MICROSTEPS      128
+    #define Z3_OVERCURRENT    2000
+    #define Z3_STALLCURRENT   1500
+    #define Z3_MAX_VOLTAGE     127
+    #define Z3_CHAIN_POS         0
+  #endif
+
+>>>>>>> upstream/bugfix-2.0.x:config/examples/FolgerTech/i3-2020/Configuration_adv.h
   #if AXIS_DRIVER_TYPE_E0(L6470)
     #define E0_MICROSTEPS      128
     #define E0_OVERCURRENT    2000
@@ -1768,6 +1842,7 @@
     #define E0_MAX_VOLTAGE     127
     #define E0_CHAIN_POS         0
   #endif
+<<<<<<< HEAD:config/examples/FolgerTech/i3-2020/Configuration_adv.h
 
   #if AXIS_DRIVER_TYPE_E1(L6470)
     #define E1_MICROSTEPS      128
@@ -1827,6 +1902,67 @@
    */
   //#define MONITOR_L6470_DRIVER_STATUS
 
+=======
+
+  #if AXIS_DRIVER_TYPE_E1(L6470)
+    #define E1_MICROSTEPS      128
+    #define E1_OVERCURRENT    2000
+    #define E1_STALLCURRENT   1500
+    #define E1_MAX_VOLTAGE     127
+    #define E1_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E2(L6470)
+    #define E2_MICROSTEPS      128
+    #define E2_OVERCURRENT    2000
+    #define E2_STALLCURRENT   1500
+    #define E2_MAX_VOLTAGE     127
+    #define E2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E3(L6470)
+    #define E3_MICROSTEPS      128
+    #define E3_OVERCURRENT    2000
+    #define E3_STALLCURRENT   1500
+    #define E3_MAX_VOLTAGE     127
+    #define E3_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E4(L6470)
+    #define E4_MICROSTEPS      128
+    #define E4_OVERCURRENT    2000
+    #define E4_STALLCURRENT   1500
+    #define E4_MAX_VOLTAGE     127
+    #define E4_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E5(L6470)
+    #define E5_MICROSTEPS      128
+    #define E5_OVERCURRENT    2000
+    #define E5_STALLCURRENT   1500
+    #define E5_MAX_VOLTAGE     127
+    #define E5_CHAIN_POS         0
+  #endif
+
+  /**
+   * Monitor L6470 drivers for error conditions like over temperature and over current.
+   * In the case of over temperature Marlin can decrease the drive until the error condition clears.
+   * Other detected conditions can be used to stop the current print.
+   * Relevant g-codes:
+   * M906 - I1/2/3/4/5  Set or get motor drive level using axis codes X, Y, Z, E. Report values if no axis codes given.
+   *         I not present or I0 or I1 - X, Y, Z or E0
+   *         I2 - X2, Y2, Z2 or E1
+   *         I3 - Z3 or E3
+   *         I4 - E4
+   *         I5 - E5
+   * M916 - Increase drive level until get thermal warning
+   * M917 - Find minimum current thresholds
+   * M918 - Increase speed until max or error
+   * M122 S0/1 - Report driver parameters
+   */
+  //#define MONITOR_L6470_DRIVER_STATUS
+
+>>>>>>> upstream/bugfix-2.0.x:config/examples/FolgerTech/i3-2020/Configuration_adv.h
   #if ENABLED(MONITOR_L6470_DRIVER_STATUS)
     #define KVAL_HOLD_STEP_DOWN     1
     //#define L6470_STOP_ON_ERROR

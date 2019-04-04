@@ -572,7 +572,11 @@ class Temperature {
         #if HAS_HEATED_CHAMBER
           temp_chamber.target =
             #ifdef CHAMBER_MAXTEMP
+<<<<<<< HEAD
               min(celsius, CHAMBER_MAXTEMP)
+=======
+              MIN(celsius, CHAMBER_MAXTEMP)
+>>>>>>> upstream/bugfix-2.0.x
             #else
               celsius
             #endif

@@ -773,8 +773,9 @@
   // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
   #define SDCARD_RATHERRECENTFIRST
 
-  // Add an option in the menu to run all auto#.g files
-  //#define MENU_ADDAUTOSTART
+  //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
+
+  #define EVENT_GCODE_SD_STOP "G27"         // G-code to run on Stop Print (e.g., "G28XY" or "G27")
 
   /**
    * Continue after Power-Loss (Creality3D)
@@ -962,6 +963,14 @@
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
+<<<<<<< HEAD:config/examples/Micromake/C1/enhanced/Configuration_adv.h
+=======
+
+  // Frivolous Game Options
+  //#define MARLIN_BRICKOUT
+  //#define MARLIN_INVADERS
+  //#define MARLIN_SNAKE
+>>>>>>> upstream/bugfix-2.0.x:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 
 #endif // HAS_GRAPHICAL_LCD
 
@@ -1525,6 +1534,7 @@
     #define E4_MICROSTEPS  16
     #define E4_RSENSE    0.11
   #endif
+<<<<<<< HEAD:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 
   #if AXIS_IS_TMC(E5)
     #define E5_CURRENT    800
@@ -1532,6 +1542,15 @@
     #define E5_RSENSE    0.11
   #endif
 
+=======
+
+  #if AXIS_IS_TMC(E5)
+    #define E5_CURRENT    800
+    #define E5_MICROSTEPS  16
+    #define E5_RSENSE    0.11
+  #endif
+
+>>>>>>> upstream/bugfix-2.0.x:config/examples/Micromake/C1/enhanced/Configuration_adv.h
   /**
    * Override default SPI pins for TMC2130, TMC2160, TMC2660, TMC5130 and TMC5160 drivers here.
    * The default pins can be found in your board's pins file.
@@ -1577,6 +1596,7 @@
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
   #define STEALTHCHOP_E
+<<<<<<< HEAD:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -1595,6 +1615,26 @@
   #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
 
   /**
+=======
+
+  /**
+   * Optimize spreadCycle chopper parameters by using predefined parameter sets
+   * or with the help of an example included in the library.
+   * Provided parameter sets are
+   * CHOPPER_DEFAULT_12V
+   * CHOPPER_DEFAULT_19V
+   * CHOPPER_DEFAULT_24V
+   * CHOPPER_DEFAULT_36V
+   * CHOPPER_PRUSAMK3_24V // Imported parameters from the official Prusa firmware for MK3 (24V)
+   * CHOPPER_MARLIN_119   // Old defaults from Marlin v1.1.9
+   *
+   * Define you own with
+   * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
+   */
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+
+  /**
+>>>>>>> upstream/bugfix-2.0.x:config/examples/Micromake/C1/enhanced/Configuration_adv.h
    * Monitor Trinamic drivers for error conditions,
    * like overtemperature and short to ground. TMC2208 requires hardware serial.
    * In the case of overtemperature Marlin can decrease the driver current until error condition clears.
@@ -1704,6 +1744,7 @@
 #if HAS_DRIVER(L6470)
 
   //#define L6470_CHITCHAT        // Display additional status info
+<<<<<<< HEAD:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 
   #if AXIS_DRIVER_TYPE_X(L6470)
     #define X_MICROSTEPS     128  // Number of microsteps (VALID: 1, 2, 4, 8, 16, 32, 128)
@@ -1827,6 +1868,131 @@
    */
   //#define MONITOR_L6470_DRIVER_STATUS
 
+=======
+
+  #if AXIS_DRIVER_TYPE_X(L6470)
+    #define X_MICROSTEPS     128  // Number of microsteps (VALID: 1, 2, 4, 8, 16, 32, 128)
+    #define X_OVERCURRENT   2000  // (mA) Current where the driver detects an over current (VALID: 375 x (1 - 16) - 6A max - rounds down)
+    #define X_STALLCURRENT  1500  // (mA) Current where the driver detects a stall (VALID: 31.25 * (1-128) -  4A max - rounds down)
+    #define X_MAX_VOLTAGE    127  // 0-255, Maximum effective voltage seen by stepper
+    #define X_CHAIN_POS        0  // Position in SPI chain, 0=Not in chain, 1=Nearest MOSI
+  #endif
+
+  #if AXIS_DRIVER_TYPE_X2(L6470)
+    #define X2_MICROSTEPS      128
+    #define X2_OVERCURRENT    2000
+    #define X2_STALLCURRENT   1500
+    #define X2_MAX_VOLTAGE     127
+    #define X2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Y(L6470)
+    #define Y_MICROSTEPS       128
+    #define Y_OVERCURRENT     2000
+    #define Y_STALLCURRENT    1500
+    #define Y_MAX_VOLTAGE      127
+    #define Y_CHAIN_POS          0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Y2(L6470)
+    #define Y2_MICROSTEPS      128
+    #define Y2_OVERCURRENT    2000
+    #define Y2_STALLCURRENT   1500
+    #define Y2_MAX_VOLTAGE     127
+    #define Y2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z(L6470)
+    #define Z_MICROSTEPS       128
+    #define Z_OVERCURRENT     2000
+    #define Z_STALLCURRENT    1500
+    #define Z_MAX_VOLTAGE      127
+    #define Z_CHAIN_POS          0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z2(L6470)
+    #define Z2_MICROSTEPS      128
+    #define Z2_OVERCURRENT    2000
+    #define Z2_STALLCURRENT   1500
+    #define Z2_MAX_VOLTAGE     127
+    #define Z2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_Z3(L6470)
+    #define Z3_MICROSTEPS      128
+    #define Z3_OVERCURRENT    2000
+    #define Z3_STALLCURRENT   1500
+    #define Z3_MAX_VOLTAGE     127
+    #define Z3_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E0(L6470)
+    #define E0_MICROSTEPS      128
+    #define E0_OVERCURRENT    2000
+    #define E0_STALLCURRENT   1500
+    #define E0_MAX_VOLTAGE     127
+    #define E0_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E1(L6470)
+    #define E1_MICROSTEPS      128
+    #define E1_OVERCURRENT    2000
+    #define E1_STALLCURRENT   1500
+    #define E1_MAX_VOLTAGE     127
+    #define E1_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E2(L6470)
+    #define E2_MICROSTEPS      128
+    #define E2_OVERCURRENT    2000
+    #define E2_STALLCURRENT   1500
+    #define E2_MAX_VOLTAGE     127
+    #define E2_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E3(L6470)
+    #define E3_MICROSTEPS      128
+    #define E3_OVERCURRENT    2000
+    #define E3_STALLCURRENT   1500
+    #define E3_MAX_VOLTAGE     127
+    #define E3_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E4(L6470)
+    #define E4_MICROSTEPS      128
+    #define E4_OVERCURRENT    2000
+    #define E4_STALLCURRENT   1500
+    #define E4_MAX_VOLTAGE     127
+    #define E4_CHAIN_POS         0
+  #endif
+
+  #if AXIS_DRIVER_TYPE_E5(L6470)
+    #define E5_MICROSTEPS      128
+    #define E5_OVERCURRENT    2000
+    #define E5_STALLCURRENT   1500
+    #define E5_MAX_VOLTAGE     127
+    #define E5_CHAIN_POS         0
+  #endif
+
+  /**
+   * Monitor L6470 drivers for error conditions like over temperature and over current.
+   * In the case of over temperature Marlin can decrease the drive until the error condition clears.
+   * Other detected conditions can be used to stop the current print.
+   * Relevant g-codes:
+   * M906 - I1/2/3/4/5  Set or get motor drive level using axis codes X, Y, Z, E. Report values if no axis codes given.
+   *         I not present or I0 or I1 - X, Y, Z or E0
+   *         I2 - X2, Y2, Z2 or E1
+   *         I3 - Z3 or E3
+   *         I4 - E4
+   *         I5 - E5
+   * M916 - Increase drive level until get thermal warning
+   * M917 - Find minimum current thresholds
+   * M918 - Increase speed until max or error
+   * M122 S0/1 - Report driver parameters
+   */
+  //#define MONITOR_L6470_DRIVER_STATUS
+
+>>>>>>> upstream/bugfix-2.0.x:config/examples/Micromake/C1/enhanced/Configuration_adv.h
   #if ENABLED(MONITOR_L6470_DRIVER_STATUS)
     #define KVAL_HOLD_STEP_DOWN     1
     //#define L6470_STOP_ON_ERROR
@@ -2243,6 +2409,7 @@
   #define WIFI_PWD  "Wifi Password"
   //#define WEBSUPPORT        // Start a webserver with auto-discovery
   //#define OTASUPPORT        // Support over-the-air firmware updates
+<<<<<<< HEAD:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 #endif
 
 /**
@@ -2312,6 +2479,77 @@
   //#define SERVICE_INTERVAL_3    1 // print hours
 #endif
 
+=======
+#endif
+
+/**
+ * Prusa Multi-Material Unit v2
+ * Enable in Configuration.h
+ */
+#if ENABLED(PRUSA_MMU2)
+
+  // Serial port used for communication with MMU2.
+  // For AVR enable the UART port used for the MMU. (e.g., internalSerial)
+  // For 32-bit boards check your HAL for available serial ports. (e.g., Serial2)
+  #define INTERNAL_SERIAL_PORT 2
+  #define MMU2_SERIAL internalSerial
+
+  // Use hardware reset for MMU if a pin is defined for it
+  //#define MMU2_RST_PIN 23
+
+  // Enable if the MMU2 has 12V stepper motors (MMU2 Firmware 1.0.2 and up)
+  //#define MMU2_MODE_12V
+
+  // G-code to execute when MMU2 F.I.N.D.A. probe detects filament runout
+  #define MMU2_FILAMENT_RUNOUT_SCRIPT "M600"
+
+  // Add an LCD menu for MMU2
+  //#define MMU2_MENUS
+  #if ENABLED(MMU2_MENUS)
+    // Settings for filament load / unload from the LCD menu.
+    // This is for Prusa MK3-style extruders. Customize for your hardware.
+    #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
+    #define MMU2_LOAD_TO_NOZZLE_SEQUENCE \
+      {  7.2,  562 }, \
+      { 14.4,  871 }, \
+      { 36.0, 1393 }, \
+      { 14.4,  871 }, \
+      { 50.0,  198 }
+
+    #define MMU2_RAMMING_SEQUENCE \
+      {   1.0, 1000 }, \
+      {   1.0, 1500 }, \
+      {   2.0, 2000 }, \
+      {   1.5, 3000 }, \
+      {   2.5, 4000 }, \
+      { -15.0, 5000 }, \
+      { -14.0, 1200 }, \
+      {  -6.0,  600 }, \
+      {  10.0,  700 }, \
+      { -10.0,  400 }, \
+      { -50.0, 2000 }
+
+  #endif
+
+  //#define MMU2_DEBUG  // Write debug info to serial output
+
+#endif // PRUSA_MMU2
+
+/**
+ * Advanced Print Counter settings
+ */
+#if ENABLED(PRINTCOUNTER)
+  #define SERVICE_WARNING_BUZZES  3
+  // Activate up to 3 service interval watchdogs
+  //#define SERVICE_NAME_1      "Service S"
+  //#define SERVICE_INTERVAL_1  100 // print hours
+  //#define SERVICE_NAME_2      "Service L"
+  //#define SERVICE_INTERVAL_2  200 // print hours
+  //#define SERVICE_NAME_3      "Service 3"
+  //#define SERVICE_INTERVAL_3    1 // print hours
+#endif
+
+>>>>>>> upstream/bugfix-2.0.x:config/examples/Micromake/C1/enhanced/Configuration_adv.h
 // @section develop
 
 /**

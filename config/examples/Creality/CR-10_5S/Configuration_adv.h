@@ -773,8 +773,14 @@
   // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
   #define SDCARD_RATHERRECENTFIRST
 
+<<<<<<< HEAD
   // Add an option in the menu to run all auto#.g files
   //#define MENU_ADDAUTOSTART
+=======
+  //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
+
+  #define EVENT_GCODE_SD_STOP "G27"         // G-code to run on Stop Print (e.g., "G28XY" or "G27")
+>>>>>>> upstream/bugfix-2.0.x
 
   /**
    * Continue after Power-Loss (Creality3D)
@@ -963,6 +969,14 @@
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
 
+<<<<<<< HEAD
+=======
+  // Frivolous Game Options
+  //#define MARLIN_BRICKOUT
+  //#define MARLIN_INVADERS
+  //#define MARLIN_SNAKE
+
+>>>>>>> upstream/bugfix-2.0.x
 #endif // HAS_GRAPHICAL_LCD
 
 // @section safety
