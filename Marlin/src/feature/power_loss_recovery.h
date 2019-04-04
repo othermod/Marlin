@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
@@ -27,6 +27,10 @@
 
 #include "../sd/cardreader.h"
 #include "../inc/MarlinConfigPre.h"
+
+#if ENABLED(MIXING_EXTRUDER)
+  #include "../feature/mixing.h"
+#endif
 
 #define SAVE_INFO_INTERVAL_MS 0
 //#define SAVE_EACH_CMD_MODE
@@ -63,8 +67,20 @@ typedef struct {
     float retract[EXTRUDERS], retract_hop;
   #endif
 
+  // Mixing extruder and gradient
+  #if ENABLED(MIXING_EXTRUDER)
+    //uint_fast8_t selected_vtool;
+    //mixer_comp_t color[NR_MIXING_VIRTUAL_TOOLS][MIXING_STEPPERS];
+    #if ENABLED(GRADIENT_MIX)
+      gradient_t gradient;
+    #endif
+  #endif
+
+  // Relative mode
+  bool relative_mode, relative_modes_e;
+
   // Command queue
-  uint8_t cmd_queue_index_r, commands_in_queue;
+  uint8_t commands_in_queue, cmd_queue_index_r;
   char command_queue[BUFSIZE][MAX_CMD_SIZE];
 
   // SD Filename and position
@@ -104,6 +120,7 @@ class PrintJobRecovery {
       #else
         false
       #endif
+      , const bool save_queue=true
     );
 
   static inline bool valid() { return info.valid_head && info.valid_head == info.valid_foot; }
